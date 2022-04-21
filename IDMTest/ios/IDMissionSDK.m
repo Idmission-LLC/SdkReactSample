@@ -4,8 +4,8 @@
 //
 
 #import "IDMissionSDK.h"
+#import <AppItFramework/AppItSDK.h>
 #import <React/RCTEventEmitter.h>
-#import "IDMTest-Swift.h"
 
 @interface IDMissionSDK ()
 
@@ -17,106 +17,98 @@ static IDMissionSDK *gInstance = NULL;
 
 - (NSArray<NSString *> *)supportedEvents
 {
-  return @[@"onSessionConnect",@"DataCallback"];
+  return @[@"onSessionConnect",@"FaceCallback",@"IDCaptureCallback",@"ImageProcessingAndFaceMatchingCallback",@"DataCallback"];
 
 }
 
-RCT_EXPORT_METHOD(initializeSDK:(NSString *)initialize_url url:(NSString *)url loginId:(NSString *)loginId password:(NSString *)password merchantid:(NSString *)merchantid)
+RCT_EXPORT_METHOD(initializeSDK:(NSString *)url loginId:(NSString *)loginId password:(NSString *)password merchantid:(NSString *)merchantid productid:(NSNumber * _Nonnull)productid productname:(NSString *)productname language:(NSString *)language)
 {
   UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  
   gInstance = self;
+  
   dispatch_async(dispatch_get_main_queue(), ^{
-    [rootViewController viewDidLoad];
+    NSString *productidString = [productid stringValue];
+
+    [AppItSDK initializeAppItSDK:self url:url loginId:loginId password:password merchantID:merchantid productID:productidString productName:productname Language:language EnableDebug:false enableGPS:false];
     
-    id objects[] = { initialize_url, url, loginId, password, merchantid };
-    id keys[] = { @"initialize_url", @"url", @"loginId", @"password", @"merchantId"};
-    NSUInteger count = sizeof(objects) / sizeof(id);
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:objects
-                                                           forKeys:keys
-                                                             count:count];
+  });
+}
+
+-(void)initializeSDKResponse : (NSMutableDictionary*) result {
+  NSMutableDictionary *resultDict = [result objectForKey:@"Result"];
+  NSLog(@"Response : %@ ", resultDict);
+  [IDMissionSDK getEvent:@"DataCallback" dict:resultDict];
+}
+
+RCT_EXPORT_METHOD(detectFace)
+{
+  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  
+  dispatch_async(dispatch_get_main_queue(), ^{
     
-    IDentitySDKHelper *client = [IDentitySDKHelper new];
-    [client initializeSDKWithData:dictionary instances:rootViewController];
+    NSMutableDictionary *nsDict = [[NSMutableDictionary alloc] init];
+    [AppItSDK detectFace:rootViewController faceCaptureConfig:nsDict];
+    
   });
 }
 
-RCT_EXPORT_METHOD(serviceID20)
+RCT_EXPORT_METHOD(captureIDFront:(NSString *)country id_type:(NSString *)ids)
 {
   UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
-    IDentitySDKHelper *client = [IDentitySDKHelper new];
-    [client startIDValidationsWithInstances: rootViewController];
+    
+    NSMutableDictionary *nsDict = [[NSMutableDictionary alloc] init];
+    [nsDict setObject:country forKey:@"country_code"];
+    [nsDict setObject:@"" forKey:@"state_code"];
+    [nsDict setObject:ids forKey:@"id_type"];
+    
+    [AppItSDK captureFrontImage:rootViewController additionalDictionary:nil uiConfigDictionary:nsDict];
+    
   });
 }
 
-RCT_EXPORT_METHOD(serviceID10)
+RCT_EXPORT_METHOD(captureIDBack:(NSString *)country id_type:(NSString *)ids)
 {
   UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
-    IDentitySDKHelper *client = [IDentitySDKHelper new];
-    [client startIDValidationAndMatchFacesWithInstances: rootViewController];
+
+    NSMutableDictionary *nsDict = [[NSMutableDictionary alloc] init];
+    [nsDict setObject:country forKey:@"country_code"];
+    [nsDict setObject:@"" forKey:@"state_code"];
+    [nsDict setObject:ids forKey:@"id_type"];
+    
+    [AppItSDK captureBackImage:rootViewController additionalDictionary:nil uiConfigDictionary:nsDict];
   });
 }
 
-RCT_EXPORT_METHOD(serviceID50:(NSString *)uniqueNumber)
+RCT_EXPORT_METHOD(processImageAndMatchFace:(NSString *)country id_type:(NSString *)ids)
 {
   UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
-    IDentitySDKHelper *client = [IDentitySDKHelper new];
-    [client startIDValidationAndCustomerEnrollsWithUniqueNumbers:uniqueNumber instances:rootViewController];
-  });
-}
-
-RCT_EXPORT_METHOD(serviceID175:(NSString *)uniqueNumber)
-{
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-  
-  dispatch_async(dispatch_get_main_queue(), ^{
-    IDentitySDKHelper *client = [IDentitySDKHelper new];
-    [client startCustomerEnrollBiometricssWithUniqueNumbers:uniqueNumber instances:rootViewController];
-  });
-}
-
-RCT_EXPORT_METHOD(serviceID105:(NSString *)uniqueNumber)
-{
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-  
-  dispatch_async(dispatch_get_main_queue(), ^{
-    IDentitySDKHelper *client = [IDentitySDKHelper new];
-    [client startCustomerVerificationsWithUniqueNumbers:uniqueNumber instances:rootViewController];
-  });
-}
-
-RCT_EXPORT_METHOD(serviceID185)
-{
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-  
-  dispatch_async(dispatch_get_main_queue(), ^{
-    IDentitySDKHelper *client = [IDentitySDKHelper new];
-    [client startIdentifyCustomersWithInstances: rootViewController];
-  });
-}
-
-RCT_EXPORT_METHOD(serviceID660)
-{
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-  
-  dispatch_async(dispatch_get_main_queue(), ^{
-    IDentitySDKHelper *client = [IDentitySDKHelper new];
-    [client startLiveFaceChecksWithInstances: rootViewController];
-  });
-}
-
-RCT_EXPORT_METHOD(submitResult)
-{
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-  
-  dispatch_async(dispatch_get_main_queue(), ^{
-    IDentitySDKHelper *client = [IDentitySDKHelper new];
-    [client submitResultWithInstances:rootViewController];
+    
+    NSMutableDictionary *nsDict = [[NSMutableDictionary alloc] init];
+    
+    [nsDict setObject:@"N" forKey:@"Manual_Review_Required"];
+    [nsDict setObject:@"N" forKey:@"Bypass_Age_Validation"];
+    [nsDict setObject:@"N" forKey:@"Bypass_Name_Matching"];
+    [nsDict setObject:@"N" forKey:@"Deduplication_Required"];
+    [nsDict setObject:@"N" forKey:@"Need_Immediate_Response"];
+    [nsDict setObject:@"N" forKey:@"POST_Data_API_Required"];
+    [nsDict setObject:@"N" forKey:@"Send_Input_Images_in_POST"];
+    [nsDict setObject:@"N" forKey:@"Send_Processed_Images_in_POST"];
+    [nsDict setObject:@"N" forKey:@"Capture_Secondary_ID"];
+    [nsDict setObject:@"N" forKey:@"Deduplication_Manual_Review_Required"];
+    [nsDict setObject:@"Y" forKey:@"ID_Back_Image_Required"];
+    [nsDict setObject:@"N" forKey:@"Verify_Data_With_Host"];
+    [nsDict setObject:@"10" forKey:@"Service_ID"];
+    [nsDict setObject:@"M" forKey:@"Customer_Gender"];
+    
+    [AppItSDK processImageAndMatchFace:rootViewController countryCode:country stateCode:@"" idType:ids faceImageType:@"FACE_IMAGE" additionalDictionary:nsDict finalSubmit:true clearFormKey:true];
+    
   });
 }
 
@@ -128,10 +120,4 @@ RCT_EXPORT_MODULE(IDMissionSDK);
   [gInstance sendEventWithName:type body:dict];
 
 }
-
-- (void) getEvent2: (NSString*)type dict:(NSMutableDictionary*) dict
-{
-  [gInstance sendEventWithName:type body:dict];
-}
-
 @end

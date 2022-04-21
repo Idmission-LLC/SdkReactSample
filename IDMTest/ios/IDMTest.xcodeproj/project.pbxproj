@@ -11,21 +11,14 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		213E9D60D349E18185F91EB9 /* libPods-IDMTest-IDMTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9467DB162BB94669CD44D7AE /* libPods-IDMTest-IDMTestTests.a */; };
-		2465BB4627F62C11009F77FA /* IDCaptureLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2465BB4027F62C0A009F77FA /* IDCaptureLite.framework */; };
-		2465BB4727F62C11009F77FA /* IDCaptureLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2465BB4027F62C0A009F77FA /* IDCaptureLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2465BB4827F62C12009F77FA /* IDentityLiteSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2465BB4127F62C0E009F77FA /* IDentityLiteSDK.framework */; };
-		2465BB4927F62C12009F77FA /* IDentityLiteSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2465BB4127F62C0E009F77FA /* IDentityLiteSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2465BB4A27F62C13009F77FA /* SelfieCaptureLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2465BB4227F62C0E009F77FA /* SelfieCaptureLite.framework */; };
-		2465BB4B27F62C13009F77FA /* SelfieCaptureLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2465BB4227F62C0E009F77FA /* SelfieCaptureLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		24EC38F827E39DB00062F8C3 /* UserDefaults+IDentitySample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EC38EF27E39DB00062F8C3 /* UserDefaults+IDentitySample.swift */; };
-		24EC38F927E39DB00062F8C3 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EC38F027E39DB00062F8C3 /* SuccessViewController.swift */; };
-		24EC38FA27E39DB00062F8C3 /* IDentitySDKHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EC38F127E39DB00062F8C3 /* IDentitySDKHelper.swift */; };
+		24BF657D2811A8930059146C /* AppItFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BF657B2811A8760059146C /* AppItFramework.framework */; };
+		24BF657E2811A8930059146C /* AppItFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24BF657B2811A8760059146C /* AppItFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		24BF65802811A93D0059146C /* void.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BF657F2811A93D0059146C /* void.swift */; };
 		24EC38FB27E39DB00062F8C3 /* IDMissionSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC38F227E39DB00062F8C3 /* IDMissionSDK.m */; };
 		24EC38FC27E39DB00062F8C3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC38F327E39DB00062F8C3 /* MainViewController.m */; };
-		24EC38FD27E39DB00062F8C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EC38F727E39DB00062F8C3 /* ViewController.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		B87B13714CFE2731FF747113 /* libPods-IDMTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B9D39A113BB728C5A36EC0 /* libPods-IDMTest.a */; };
+		A37BA377F8D48B7D0DA40509 /* libPods-IDMTest-IDMTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B6B08D42D8FD556970CDCA /* libPods-IDMTest-IDMTestTests.a */; };
+		BC322E332883F65FB3114BED /* libPods-IDMTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECEA1D8FAEB59EACD15C4A98 /* libPods-IDMTest.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,9 +38,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2465BB4727F62C11009F77FA /* IDCaptureLite.framework in Embed Frameworks */,
-				2465BB4B27F62C13009F77FA /* SelfieCaptureLite.framework in Embed Frameworks */,
-				2465BB4927F62C12009F77FA /* IDentityLiteSDK.framework in Embed Frameworks */,
+				24BF657E2811A8930059146C /* AppItFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,26 +55,21 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = IDMTest/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = IDMTest/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = IDMTest/main.m; sourceTree = "<group>"; };
-		1FB5A51FC264AA2CC7D7D322 /* Pods-IDMTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDMTest.release.xcconfig"; path = "Target Support Files/Pods-IDMTest/Pods-IDMTest.release.xcconfig"; sourceTree = "<group>"; };
-		2465BB4027F62C0A009F77FA /* IDCaptureLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IDCaptureLite.framework; sourceTree = "<group>"; };
-		2465BB4127F62C0E009F77FA /* IDentityLiteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IDentityLiteSDK.framework; sourceTree = "<group>"; };
-		2465BB4227F62C0E009F77FA /* SelfieCaptureLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SelfieCaptureLite.framework; sourceTree = "<group>"; };
+		24BF657B2811A8760059146C /* AppItFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppItFramework.framework; sourceTree = "<group>"; };
+		24BF657F2811A93D0059146C /* void.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = void.swift; sourceTree = "<group>"; };
 		24EC38EE27E39DAF0062F8C3 /* IDMTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IDMTest-Bridging-Header.h"; sourceTree = "<group>"; };
-		24EC38EF27E39DB00062F8C3 /* UserDefaults+IDentitySample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+IDentitySample.swift"; sourceTree = "<group>"; };
-		24EC38F027E39DB00062F8C3 /* SuccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
-		24EC38F127E39DB00062F8C3 /* IDentitySDKHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDentitySDKHelper.swift; sourceTree = "<group>"; };
 		24EC38F227E39DB00062F8C3 /* IDMissionSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDMissionSDK.m; sourceTree = "<group>"; };
 		24EC38F327E39DB00062F8C3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		24EC38F427E39DB00062F8C3 /* IDMissionSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMissionSDK.h; sourceTree = "<group>"; };
 		24EC38F527E39DB00062F8C3 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		24EC38F727E39DB00062F8C3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		25B1059D2EBE648AFB530A12 /* Pods-IDMTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDMTest.debug.xcconfig"; path = "Target Support Files/Pods-IDMTest/Pods-IDMTest.debug.xcconfig"; sourceTree = "<group>"; };
-		727C07925668F043AEEF1460 /* Pods-IDMTest-IDMTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDMTest-IDMTestTests.debug.xcconfig"; path = "Target Support Files/Pods-IDMTest-IDMTestTests/Pods-IDMTest-IDMTestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		25B6B08D42D8FD556970CDCA /* libPods-IDMTest-IDMTestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IDMTest-IDMTestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49F4E7C49AC96FB73D1264B9 /* Pods-IDMTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDMTest.release.xcconfig"; path = "Target Support Files/Pods-IDMTest/Pods-IDMTest.release.xcconfig"; sourceTree = "<group>"; };
+		6C348CF20F21FA305AEF8DDA /* Pods-IDMTest-IDMTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDMTest-IDMTestTests.debug.xcconfig"; path = "Target Support Files/Pods-IDMTest-IDMTestTests/Pods-IDMTest-IDMTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = IDMTest/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		87B9D39A113BB728C5A36EC0 /* libPods-IDMTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IDMTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9467DB162BB94669CD44D7AE /* libPods-IDMTest-IDMTestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IDMTest-IDMTestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B248FC9E3995B7B8A108E83B /* Pods-IDMTest-IDMTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDMTest-IDMTestTests.release.xcconfig"; path = "Target Support Files/Pods-IDMTest-IDMTestTests/Pods-IDMTest-IDMTestTests.release.xcconfig"; sourceTree = "<group>"; };
+		B24D1FC1AAC670556BFDD139 /* Pods-IDMTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDMTest.debug.xcconfig"; path = "Target Support Files/Pods-IDMTest/Pods-IDMTest.debug.xcconfig"; sourceTree = "<group>"; };
+		ECEA1D8FAEB59EACD15C4A98 /* libPods-IDMTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IDMTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F6ACC257CF9895362D50B946 /* Pods-IDMTest-IDMTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDMTest-IDMTestTests.release.xcconfig"; path = "Target Support Files/Pods-IDMTest-IDMTestTests/Pods-IDMTest-IDMTestTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				213E9D60D349E18185F91EB9 /* libPods-IDMTest-IDMTestTests.a in Frameworks */,
+				A37BA377F8D48B7D0DA40509 /* libPods-IDMTest-IDMTestTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,10 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2465BB4627F62C11009F77FA /* IDCaptureLite.framework in Frameworks */,
-				2465BB4A27F62C13009F77FA /* SelfieCaptureLite.framework in Frameworks */,
-				B87B13714CFE2731FF747113 /* libPods-IDMTest.a in Frameworks */,
-				2465BB4827F62C12009F77FA /* IDentityLiteSDK.framework in Frameworks */,
+				24BF657D2811A8930059146C /* AppItFramework.framework in Frameworks */,
+				BC322E332883F65FB3114BED /* libPods-IDMTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,14 +113,11 @@
 		13B07FAE1A68108700A75B9A /* IDMTest */ = {
 			isa = PBXGroup;
 			children = (
-				24EC38F127E39DB00062F8C3 /* IDentitySDKHelper.swift */,
+				24BF657F2811A93D0059146C /* void.swift */,
 				24EC38F427E39DB00062F8C3 /* IDMissionSDK.h */,
 				24EC38F227E39DB00062F8C3 /* IDMissionSDK.m */,
 				24EC38F527E39DB00062F8C3 /* MainViewController.h */,
 				24EC38F327E39DB00062F8C3 /* MainViewController.m */,
-				24EC38F027E39DB00062F8C3 /* SuccessViewController.swift */,
-				24EC38EF27E39DB00062F8C3 /* UserDefaults+IDentitySample.swift */,
-				24EC38F727E39DB00062F8C3 /* ViewController.swift */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -151,12 +132,10 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2465BB4027F62C0A009F77FA /* IDCaptureLite.framework */,
-				2465BB4127F62C0E009F77FA /* IDentityLiteSDK.framework */,
-				2465BB4227F62C0E009F77FA /* SelfieCaptureLite.framework */,
+				24BF657B2811A8760059146C /* AppItFramework.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				87B9D39A113BB728C5A36EC0 /* libPods-IDMTest.a */,
-				9467DB162BB94669CD44D7AE /* libPods-IDMTest-IDMTestTests.a */,
+				ECEA1D8FAEB59EACD15C4A98 /* libPods-IDMTest.a */,
+				25B6B08D42D8FD556970CDCA /* libPods-IDMTest-IDMTestTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -164,10 +143,10 @@
 		4CBE34D2A9F5A84A7823D6D6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				25B1059D2EBE648AFB530A12 /* Pods-IDMTest.debug.xcconfig */,
-				1FB5A51FC264AA2CC7D7D322 /* Pods-IDMTest.release.xcconfig */,
-				727C07925668F043AEEF1460 /* Pods-IDMTest-IDMTestTests.debug.xcconfig */,
-				F6ACC257CF9895362D50B946 /* Pods-IDMTest-IDMTestTests.release.xcconfig */,
+				B24D1FC1AAC670556BFDD139 /* Pods-IDMTest.debug.xcconfig */,
+				49F4E7C49AC96FB73D1264B9 /* Pods-IDMTest.release.xcconfig */,
+				6C348CF20F21FA305AEF8DDA /* Pods-IDMTest-IDMTestTests.debug.xcconfig */,
+				B248FC9E3995B7B8A108E83B /* Pods-IDMTest-IDMTestTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -210,12 +189,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "IDMTestTests" */;
 			buildPhases = (
-				E2114FCCE38EF816E37AEB1E /* [CP] Check Pods Manifest.lock */,
+				372B536A980B000F9775D057 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				82B1DCE05B9CECD017FBC50E /* [CP] Embed Pods Frameworks */,
-				F788A02F41BBE0CB7B05C53A /* [CP] Copy Pods Resources */,
+				248E2462B247A03812F78C60 /* [CP] Embed Pods Frameworks */,
+				BA1D538ADA83468AB7395E61 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,15 +210,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "IDMTest" */;
 			buildPhases = (
-				CA4F05C97BE5E0F77CD1E46B /* [CP] Check Pods Manifest.lock */,
+				90D28E072CD128B87046BE25 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				24EC390627E39E900062F8C3 /* Embed Frameworks */,
-				663AC67DF1F69DF467BD2040 /* [CP] Embed Pods Frameworks */,
-				67948EB9994BAF58365132C0 /* [CP] Copy Pods Resources */,
+				8EBED80FEBBC1AF6EC4F3754 /* [CP] Embed Pods Frameworks */,
+				FD1A3AA2770F5E83ED4B203D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,41 +299,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		663AC67DF1F69DF467BD2040 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IDMTest/Pods-IDMTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IDMTest/Pods-IDMTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IDMTest/Pods-IDMTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		67948EB9994BAF58365132C0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IDMTest/Pods-IDMTest-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IDMTest/Pods-IDMTest-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IDMTest/Pods-IDMTest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		82B1DCE05B9CECD017FBC50E /* [CP] Embed Pods Frameworks */ = {
+		248E2462B247A03812F78C60 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -371,29 +316,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IDMTest-IDMTestTests/Pods-IDMTest-IDMTestTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CA4F05C97BE5E0F77CD1E46B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IDMTest-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E2114FCCE38EF816E37AEB1E /* [CP] Check Pods Manifest.lock */ = {
+		372B536A980B000F9775D057 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -415,7 +338,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F788A02F41BBE0CB7B05C53A /* [CP] Copy Pods Resources */ = {
+		8EBED80FEBBC1AF6EC4F3754 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IDMTest/Pods-IDMTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IDMTest/Pods-IDMTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IDMTest/Pods-IDMTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90D28E072CD128B87046BE25 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IDMTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA1D538ADA83468AB7395E61 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -451,6 +413,23 @@
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		FD1A3AA2770F5E83ED4B203D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IDMTest/Pods-IDMTest-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IDMTest/Pods-IDMTest-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IDMTest/Pods-IDMTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -466,13 +445,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24EC38F827E39DB00062F8C3 /* UserDefaults+IDentitySample.swift in Sources */,
+				24BF65802811A93D0059146C /* void.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				24EC38FB27E39DB00062F8C3 /* IDMissionSDK.m in Sources */,
-				24EC38F927E39DB00062F8C3 /* SuccessViewController.swift in Sources */,
 				24EC38FC27E39DB00062F8C3 /* MainViewController.m in Sources */,
-				24EC38FA27E39DB00062F8C3 /* IDentitySDKHelper.swift in Sources */,
-				24EC38FD27E39DB00062F8C3 /* ViewController.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,7 +466,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 727C07925668F043AEEF1460 /* Pods-IDMTest-IDMTestTests.debug.xcconfig */;
+			baseConfigurationReference = 6C348CF20F21FA305AEF8DDA /* Pods-IDMTest-IDMTestTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -518,7 +494,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F6ACC257CF9895362D50B946 /* Pods-IDMTest-IDMTestTests.release.xcconfig */;
+			baseConfigurationReference = B248FC9E3995B7B8A108E83B /* Pods-IDMTest-IDMTestTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -543,7 +519,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25B1059D2EBE648AFB530A12 /* Pods-IDMTest.debug.xcconfig */;
+			baseConfigurationReference = B24D1FC1AAC670556BFDD139 /* Pods-IDMTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -564,7 +540,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.idmission.newsdklitereact;
+				PRODUCT_BUNDLE_IDENTIFIER = com.idmission.sdkreact;
 				PRODUCT_NAME = IDMTest;
 				SWIFT_OBJC_BRIDGING_HEADER = "IDMTest-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -575,7 +551,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FB5A51FC264AA2CC7D7D322 /* Pods-IDMTest.release.xcconfig */;
+			baseConfigurationReference = 49F4E7C49AC96FB73D1264B9 /* Pods-IDMTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -596,7 +572,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.idmission.newsdklitereact;
+				PRODUCT_BUNDLE_IDENTIFIER = com.idmission.sdkreact;
 				PRODUCT_NAME = IDMTest;
 				SWIFT_OBJC_BRIDGING_HEADER = "IDMTest-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
