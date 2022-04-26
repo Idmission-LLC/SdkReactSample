@@ -63,6 +63,17 @@ RCT_EXPORT_METHOD(captureIDFront:(NSString *)country id_type:(NSString *)ids)
     [nsDict setObject:country forKey:@"country_code"];
     [nsDict setObject:@"" forKey:@"state_code"];
     [nsDict setObject:ids forKey:@"id_type"];
+    [nsDict setObject:ids forKey:@"id_type"];
+    
+    //To Capture ID in Portarit Mode
+    [nsDict setObject:@"Y" forKey:@"id_capture_portrait"];
+    [nsDict setObject:@"1170" forKey:@"id_image_height"];
+    [nsDict setObject:@"800" forKey:@"id_image_width"];
+    
+    //To Capture ID in Landscape Mode
+    //[nsDict setObject:@"N" forKey:@"id_capture_portrait"];
+    //[nsDict setObject:@"800" forKey:@"id_image_height"];
+    //[nsDict setObject:@"1170" forKey:@"id_image_width"];
     
     [AppItSDK captureFrontImage:rootViewController additionalDictionary:nil uiConfigDictionary:nsDict];
     
@@ -79,6 +90,16 @@ RCT_EXPORT_METHOD(captureIDBack:(NSString *)country id_type:(NSString *)ids)
     [nsDict setObject:country forKey:@"country_code"];
     [nsDict setObject:@"" forKey:@"state_code"];
     [nsDict setObject:ids forKey:@"id_type"];
+    
+    //To Capture ID in Portarit Mode
+    [nsDict setObject:@"Y" forKey:@"id_capture_portrait"];
+    [nsDict setObject:@"1170" forKey:@"id_image_height"];
+    [nsDict setObject:@"800" forKey:@"id_image_width"];
+    
+    //To Capture ID in Landscape Mode
+    //[nsDict setObject:@"N" forKey:@"id_capture_portrait"];
+    //[nsDict setObject:@"800" forKey:@"id_image_height"];
+    //[nsDict setObject:@"1170" forKey:@"id_image_width"];
     
     [AppItSDK captureBackImage:rootViewController additionalDictionary:nil uiConfigDictionary:nsDict];
   });
