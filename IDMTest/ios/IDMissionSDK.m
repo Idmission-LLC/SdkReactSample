@@ -41,95 +41,68 @@ RCT_EXPORT_METHOD(initializeSDK:(NSString *)url loginId:(NSString *)loginId pass
   [IDMissionSDK getEvent:@"DataCallback" dict:resultDict];
 }
 
-RCT_EXPORT_METHOD(detectFace)
+RCT_EXPORT_METHOD(customizeUserInterface:(NSString *)uiconfiguration)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    NSError *error;
+    NSData* uiconfigurationData = [uiconfiguration dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *uiconfigurationDict = [NSJSONSerialization JSONObjectWithData:uiconfigurationData options:kNilOptions error:&error];
+    [AppItSDK customizeUserInterface: uiconfigurationDict];
+  });
+}
+
+RCT_EXPORT_METHOD(detectFace:(NSString *)faceCaptureConfig uiConfigDictionary:(NSString *)uiConfigDictionary)
 {
   UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
-    
-    NSMutableDictionary *nsDict = [[NSMutableDictionary alloc] init];
-    [AppItSDK detectFace:rootViewController faceCaptureConfig:nsDict];
+    NSError *error;
+    NSData* faceCaptureConfigData = [faceCaptureConfig dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *faceCaptureConfigDict = [NSJSONSerialization JSONObjectWithData:faceCaptureConfigData options:kNilOptions error:&error];
+    NSData* uiConfigDictionaryData = [uiConfigDictionary dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *uiConfigDict = [NSJSONSerialization JSONObjectWithData:uiConfigDictionaryData options:kNilOptions error:&error];
+    [AppItSDK detectFace:rootViewController faceCaptureConfig:faceCaptureConfigDict uiConfigDictionary:uiConfigDict];
     
   });
 }
 
-RCT_EXPORT_METHOD(captureIDFront:(NSString *)country id_type:(NSString *)ids)
+RCT_EXPORT_METHOD(captureIDFront:(NSString *)additionalDictionary uiConfigDictionary:(NSString *)uiConfigDictionary)
 {
   UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
-    
-    NSMutableDictionary *nsDict = [[NSMutableDictionary alloc] init];
-    [nsDict setObject:country forKey:@"country_code"];
-    [nsDict setObject:@"" forKey:@"state_code"];
-    [nsDict setObject:ids forKey:@"id_type"];
-    [nsDict setObject:ids forKey:@"id_type"];
-    
-    //To Capture ID in Portarit Mode
-    [nsDict setObject:@"Y" forKey:@"id_capture_portrait"];
-    [nsDict setObject:@"1170" forKey:@"id_image_height"];
-    [nsDict setObject:@"800" forKey:@"id_image_width"];
-    
-    //To Capture ID in Landscape Mode
-    //[nsDict setObject:@"N" forKey:@"id_capture_portrait"];
-    //[nsDict setObject:@"800" forKey:@"id_image_height"];
-    //[nsDict setObject:@"1170" forKey:@"id_image_width"];
-    
-    [AppItSDK captureFrontImage:rootViewController additionalDictionary:nil uiConfigDictionary:nsDict];
-    
+    NSError *error;
+    NSData* additionalDictionaryData = [additionalDictionary dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *additionalDict = [NSJSONSerialization JSONObjectWithData:additionalDictionaryData options:kNilOptions error:&error];
+    NSData* uiConfigDictionaryData = [uiConfigDictionary dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *uiConfigDict = [NSJSONSerialization JSONObjectWithData:uiConfigDictionaryData options:kNilOptions error:&error];
+    [AppItSDK captureFrontImage:rootViewController additionalDictionary:additionalDict uiConfigDictionary:uiConfigDict];
   });
 }
 
-RCT_EXPORT_METHOD(captureIDBack:(NSString *)country id_type:(NSString *)ids)
+RCT_EXPORT_METHOD(captureIDBack:(NSString *)additionalDictionary uiConfigDictionary:(NSString *)uiConfigDictionary)
 {
   UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
-
-    NSMutableDictionary *nsDict = [[NSMutableDictionary alloc] init];
-    [nsDict setObject:country forKey:@"country_code"];
-    [nsDict setObject:@"" forKey:@"state_code"];
-    [nsDict setObject:ids forKey:@"id_type"];
-    
-    //To Capture ID in Portarit Mode
-    [nsDict setObject:@"Y" forKey:@"id_capture_portrait"];
-    [nsDict setObject:@"1170" forKey:@"id_image_height"];
-    [nsDict setObject:@"800" forKey:@"id_image_width"];
-    
-    //To Capture ID in Landscape Mode
-    //[nsDict setObject:@"N" forKey:@"id_capture_portrait"];
-    //[nsDict setObject:@"800" forKey:@"id_image_height"];
-    //[nsDict setObject:@"1170" forKey:@"id_image_width"];
-    
-    [AppItSDK captureBackImage:rootViewController additionalDictionary:nil uiConfigDictionary:nsDict];
+    NSError *error;
+    NSData* additionalDictionaryData = [additionalDictionary dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *additionalDict = [NSJSONSerialization JSONObjectWithData:additionalDictionaryData options:kNilOptions error:&error];
+    NSData* uiConfigDictionaryData = [uiConfigDictionary dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *uiConfigDict = [NSJSONSerialization JSONObjectWithData:uiConfigDictionaryData options:kNilOptions error:&error];
+    [AppItSDK captureBackImage:rootViewController additionalDictionary:additionalDict uiConfigDictionary:uiConfigDict];
   });
 }
 
-RCT_EXPORT_METHOD(processImageAndMatchFace:(NSString *)country id_type:(NSString *)ids)
+RCT_EXPORT_METHOD(processImageAndMatchFace:(NSString *)countryCode stateCode:(NSString *)stateCode idType:(NSString *)idType additionalDictionary:(NSString *)additionalDictionary)
 {
   UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
-    
-    NSMutableDictionary *nsDict = [[NSMutableDictionary alloc] init];
-    
-    [nsDict setObject:@"N" forKey:@"Manual_Review_Required"];
-    [nsDict setObject:@"N" forKey:@"Bypass_Age_Validation"];
-    [nsDict setObject:@"N" forKey:@"Bypass_Name_Matching"];
-    [nsDict setObject:@"N" forKey:@"Deduplication_Required"];
-    [nsDict setObject:@"N" forKey:@"Need_Immediate_Response"];
-    [nsDict setObject:@"N" forKey:@"POST_Data_API_Required"];
-    [nsDict setObject:@"N" forKey:@"Send_Input_Images_in_POST"];
-    [nsDict setObject:@"N" forKey:@"Send_Processed_Images_in_POST"];
-    [nsDict setObject:@"N" forKey:@"Capture_Secondary_ID"];
-    [nsDict setObject:@"N" forKey:@"Deduplication_Manual_Review_Required"];
-    [nsDict setObject:@"Y" forKey:@"ID_Back_Image_Required"];
-    [nsDict setObject:@"N" forKey:@"Verify_Data_With_Host"];
-    [nsDict setObject:@"10" forKey:@"Service_ID"];
-    [nsDict setObject:@"M" forKey:@"Customer_Gender"];
-    
-    [AppItSDK processImageAndMatchFace:rootViewController countryCode:country stateCode:@"" idType:ids faceImageType:@"FACE_IMAGE" additionalDictionary:nsDict finalSubmit:true clearFormKey:true];
-    
+    NSError *error;
+    NSData* additionalDictionaryData = [additionalDictionary dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *additionalDict = [NSJSONSerialization JSONObjectWithData:additionalDictionaryData options:kNilOptions error:&error];
+    [AppItSDK processImageAndMatchFace:rootViewController countryCode:countryCode stateCode:stateCode idType:idType faceImageType:@"FACE_IMAGE" additionalDictionary:additionalDict finalSubmit:true clearFormKey:true];
   });
 }
 
