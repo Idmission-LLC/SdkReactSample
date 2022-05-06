@@ -55,20 +55,69 @@ export default class Home extends React.Component {
 
     }
 
+    onCustomizeUserInterface = () => {
+        var uiconfiguration = {}; 
+
+        IDMissionSDK.customizeUserInterface(JSON.stringify(uiconfiguration));
+    }
+
     onDetectFace = () => {
-        IDMissionSDK.detectFace();
+        var faceCaptureConfig = {}; 
+        var uiConfigDictionary = {};
+
+        IDMissionSDK.detectFace(JSON.stringify(faceCaptureConfig), JSON.stringify(uiConfigDictionary));
     }
 
     onCaptureIDFront = () => {
-        IDMissionSDK.captureIDFront("USA", "PP");
+        var additionalDictionary = {};
+        var uiConfigDictionary = {
+            "country_code" : "AUS",
+            "state_code" : "NS",
+            "id_type" : "DL",
+            "id_capture_portrait" : "Y",
+            "id_image_height" : "1170",
+            "id_image_width" : "800",
+        };
+
+        IDMissionSDK.captureIDFront(JSON.stringify(additionalDictionary), JSON.stringify(uiConfigDictionary));
     }
          
     onCaptureIDBack = () => {
-        IDMissionSDK.captureIDBack("USA", "PP");
+        var additionalDictionary = {};
+        var uiConfigDictionary = {
+            "country_code" : "AUS",
+            "state_code" : "NS",
+            "id_type" : "DL",
+            "id_capture_portrait" : "Y",
+            "id_image_height" : "1170",
+            "id_image_width" : "800",
+        };
+
+        IDMissionSDK.captureIDBack(JSON.stringify(additionalDictionary), JSON.stringify(uiConfigDictionary));
     }
 	
 	onProcessImageAndMatchFace = () => {
-        IDMissionSDK.processImageAndMatchFace("USA", "PP");
+        var countryCode = "AUS";
+        var stateCode = "NS";
+        var idType = "DL";
+
+        var additionalDictionary = {
+            "Manual_Review_Required" : "N",
+            "Bypass_Age_Validation" : "N",
+            "Bypass_Name_Matching" : "N",
+            "Deduplication_Required" : "N",
+            "Need_Immediate_Response" : "N",
+            "POST_Data_API_Required" : "N",
+            "Send_Input_Images_in_POST" : "N",
+            "Send_Processed_Images_in_POST" : "N",
+            "Capture_Secondary_ID" : "N",
+            "Deduplication_Manual_Review_Required" : "N",
+            "ID_Back_Image_Required" : "N",
+            "Verify_Data_With_Host" : "N",
+            "Service_ID" : "10"                        
+        };
+
+        IDMissionSDK.processImageAndMatchFace(countryCode, stateCode, idType, JSON.stringify(additionalDictionary));
     }
 
     render() {
@@ -76,7 +125,11 @@ export default class Home extends React.Component {
             <Container>
 			
                 <Content contentContainerStyle={{ justifyContent: 'center' }}>
-				    
+
+                    <TouchableOpacity style={styles.startButton} onPress={() => { this.onCustomizeUserInterface() }}>
+                        <Text style={styles.startButtonText}>Customize User Interface</Text>
+                    </TouchableOpacity>
+
                     <TouchableOpacity style={styles.startButton} onPress={() => { this.onDetectFace() }}>
                         <Text style={styles.startButtonText}>Detect Face</Text>
                     </TouchableOpacity>
