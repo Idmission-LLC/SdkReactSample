@@ -13,10 +13,10 @@ LogBox.ignoreAllLogs();
 const { IDMissionSDK } = NativeModules;
 
 var url = "https://demo.idmission.com/IDS/service/integ/idm/thirdparty/upsert";
-var login_id = "showcase_integ";
-var password = "Merchant#2";
-var merchant_id = "12511";
-var product_id = 4130;
+var login_id = "";
+var password = "";
+var merchant_id = "";
+var product_id = 0;
 var product_name = "Identity_Validation_and_Face_Matching";
 
 export default class Home extends React.Component {
