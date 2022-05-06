@@ -1,5 +1,8 @@
 package com.idmtest;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
@@ -18,6 +21,8 @@ import com.idmission.client.RequestResponseInterface;
 import com.idmission.client.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -64,26 +69,12 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
     }
 
     @ReactMethod
-    public void  detectFace() {
+    public void customizeUserInterface(String uiconfiguration) {
         try {
 
-            JSONObject commonUIObject = new JSONObject();
-            commonUIObject.put(UIConfigurationParameters.FD_LIGHT_THRESHOLD,ImageProcessingSDK.dFaceLightThreshold+"");
-            commonUIObject.put(UIConfigurationParameters.FD_FOCUS_THRESHOLD, ImageProcessingSDK.dFaceFocusThreshold+"");
-            commonUIObject.put(UIConfigurationParameters.FD_DETECTION_THRESHOLD, ImageProcessingSDK.dPassiveFaceDetectionThreshold+"");
-            commonUIObject.put(UIConfigurationParameters.FD_EYE_OPEN_THRESHOLD, ImageProcessingSDK.dPassive_EyesOpenThreshold+"");
-            commonUIObject.put(UIConfigurationParameters.FD_SPOOF_DETECTION_THRESHOLD, ImageProcessingSDK.dPassive_SpoofDetectionThreshold+"");
-            commonUIObject.put(UIConfigurationParameters.FD_SATURATION_VALUE, ImageProcessingSDK.dSaturationValue+"");
-            commonUIObject.put(UIConfigurationParameters.FD_MINIMUM_CAMERA_MEGAPIXEL,ImageProcessingSDK.selfieCameraMinMegaPixel+"");
-            commonUIObject.put(UIConfigurationParameters.FD_LAUNCH_FRONT_CAMERA, ImageProcessingSDK.dFaceLaunchFrontCamera == true ? "Y" : "N");
-            commonUIObject.put(UIConfigurationParameters.FD_TOGGLE_CAMERA, ImageProcessingSDK.dFaceEnableToggleButton == true ? "Y" : "N");
-            commonUIObject.put(UIConfigurationParameters.FD_ENABLE_CROPPING, ImageProcessingSDK.dFaceEnableCropping == true ? "Y" : "N");
-            commonUIObject.put(UIConfigurationParameters.FD_ENABLE_DONOTCAPTURE, ImageProcessingSDK.dFaceEnableCropping == true ? "Y" : "N");
-            commonUIObject.put(UIConfigurationParameters.FD_UPLOAD_FACE_DATA, ImageProcessingSDK.dUploadFaceData == true ? "Y" : "N");
-            commonUIObject.put(UIConfigurationParameters.FD_ENABLE_BGR, ImageProcessingSDK.dEnableBGR == true ? "Y" : "N");
-            commonUIObject.put(UIConfigurationParameters.FD_DATA_UPLOAD_ENVIRONMENT, "DEMO");
+            JSONObject uiconfigurationJSONObject = new JSONObject(uiconfiguration);
 
-            ImageProcessingSDK.getInstance().detectFace(getCurrentActivity(), commonUIObject);
+            ImageProcessingSDK.getInstance().customizeUserInterface(uiconfigurationJSONObject);
 
         }
         catch (Exception e)
@@ -93,49 +84,14 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
     }
 
     @ReactMethod
-    public void  captureIDFront(String country, String idType) {
+    public void detectFace(String faceCaptureConfig, String uiConfigDictionary) {
         try {
 
-            JSONObject commonFunctioObject = new JSONObject();
-            commonFunctioObject.put(UIConfigConstants.ID_CAPTURE_PORTRAIT, ImageProcessingSDK.dPortraitOrientation == true ? "Y" : "N");
-            commonFunctioObject.put(UIConfigConstants.ID_LIGHT_THRESHOLD, ImageProcessingSDK.dLightThreshold+"");
-            commonFunctioObject.put(UIConfigConstants.ID_MIN_FOCUS_THRESHOLD, ImageProcessingSDK.dMinFocusThreshold+"");
-            commonFunctioObject.put(UIConfigConstants.ID_MAX_FOCUS_THRESHOLD, ImageProcessingSDK.dMaxFocusThreshold+"");
-            commonFunctioObject.put(UIConfigConstants.ID_GLARE_PERCENTAGE, ImageProcessingSDK.dGlarePercentage+"");
-            commonFunctioObject.put(UIConfigConstants.ID_ENABLE_CAPTURE_BUTTON_TIME, ImageProcessingSDK.dCaptureBtnEnableTime+"");
-            commonFunctioObject.put(UIConfigConstants.ID_MAX_IMAGE_SIZE, ImageProcessingSDK.dImageSize+"");
-            commonFunctioObject.put(UIConfigConstants.ID_IMAGE_HEIGHT, ImageProcessingSDK.dImageHeight+"");
-            commonFunctioObject.put(UIConfigConstants.ID_IMAGE_WIDTH, ImageProcessingSDK.dImgaeWidth+"");
-            commonFunctioObject.put(UIConfigConstants.BARCODE_SCAN_MAX_LIMIT, ImageProcessingSDK.maxBarcodeScan);
-            if(null!=country && !country.isEmpty()){
-                commonFunctioObject.put(UIConfigConstants.ID_COUNTRY, country);
-            }else{
-                commonFunctioObject.put(UIConfigConstants.ID_COUNTRY, "USA");
-            }
-            commonFunctioObject.put(UIConfigConstants.ID_STATE, "");
-            if(null!=idType && !idType.isEmpty()){
-                commonFunctioObject.put(UIConfigConstants.ID_TYPE, idType);
-            }else{
-                commonFunctioObject.put(UIConfigConstants.ID_TYPE, "PP");
-            }
-            commonFunctioObject.put(UIConfigConstants.ID_MRZ_RETRY_COUNT, ImageProcessingSDK.dMRZRetryCount);
-            commonFunctioObject.put(UIConfigConstants.ID_FOCUS_SCORE, ImageProcessingSDK.dLaplaceFocus);
-            commonFunctioObject.put(UIConfigConstants.ID_SATURATION_SCORE, ImageProcessingSDK.dIDSaturationScore);
-            commonFunctioObject.put(UIConfigConstants.ID_ZOOM_SCORE, ImageProcessingSDK.dIDZoomScore);
-            commonFunctioObject.put(UIConfigConstants.ID_DISABLE_RECTANGLE_DRAWING, ImageProcessingSDK.dDisableRectDrawing ? "Y" : "N");
-            commonFunctioObject.put(UIConfigConstants.ID_ENABLE_REAL_ID_CHECK, ImageProcessingSDK.dIsRealIDRequired ? "Y" : "N");
-            commonFunctioObject.put(UIConfigConstants.ID_UPLOAD_ID_DATA, "N");
-            commonFunctioObject.put(UIConfigConstants.ID_ENABLE_DO_NOT_CAPTURE, "N");
-            commonFunctioObject.put(UIConfigConstants.ID_DATA_UPLOAD_ENVIRONMENT, "DEMO");
-            commonFunctioObject.put(UIConfigConstants.ID_MRZ_BARCODE_RETRY_COUNT, ImageProcessingSDK.dMRZBarcodeRetryCount);
-            commonFunctioObject.put(UIConfigConstants.ID_MRZ_BARCODE_RETRY_TIME, ImageProcessingSDK.dMRZBarcodeRetryTime);
-            commonFunctioObject.put(UIConfigConstants.ID_REAL_ID_CAPTURING_THRESHOLD, ImageProcessingSDK.dRealIDCaptureFrontThreshold);
-            commonFunctioObject.put(UIConfigConstants.ID_IMAGE_RESOLUTION_WIDTH, ImageProcessingSDK.dIDImageResolutionWidth);
-            commonFunctioObject.put(UIConfigConstants.ID_IMAGE_RESOLUTION_HEIGHT, ImageProcessingSDK.dIDImageResolutionHeight);
-            commonFunctioObject.put(UIConfigConstants.ID_ENABLE_IMAGE_RESIZE, ImageProcessingSDK.dImageResizeEnable ? "Y" : "N");
+            JSONObject faceCaptureConfigJSONObject = new JSONObject(faceCaptureConfig);
+            JSONObject uiConfigDictionaryJSONObject = new JSONObject(uiConfigDictionary);
 
-            Log.e("json",commonFunctioObject+"");
-            ImageProcessingSDK.getInstance().autoCapture(getCurrentActivity(), ImageType.FRONT, commonFunctioObject, null, null);
+            ImageProcessingSDK.getInstance().detectFace(getCurrentActivity(), faceCaptureConfigJSONObject, uiConfigDictionaryJSONObject);
+
         }
         catch (Exception e)
         {
@@ -144,49 +100,12 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
     }
 
     @ReactMethod
-    public void  captureIDBack(String country, String idType) {
+    public void  captureIDFront(String additionalDictionary, String uiConfigDictionary) {
         try {
 
-            JSONObject commonFunctioObject = new JSONObject();
-            commonFunctioObject.put(UIConfigConstants.ID_CAPTURE_PORTRAIT, ImageProcessingSDK.dPortraitOrientation == true ? "Y" : "N");
-            commonFunctioObject.put(UIConfigConstants.ID_LIGHT_THRESHOLD, ImageProcessingSDK.dLightThreshold+"");
-            commonFunctioObject.put(UIConfigConstants.ID_MIN_FOCUS_THRESHOLD, ImageProcessingSDK.dMinFocusThreshold+"");
-            commonFunctioObject.put(UIConfigConstants.ID_MAX_FOCUS_THRESHOLD, ImageProcessingSDK.dMaxFocusThreshold+"");
-            commonFunctioObject.put(UIConfigConstants.ID_GLARE_PERCENTAGE, ImageProcessingSDK.dGlarePercentage+"");
-            commonFunctioObject.put(UIConfigConstants.ID_ENABLE_CAPTURE_BUTTON_TIME, ImageProcessingSDK.dCaptureBtnEnableTime+"");
-            commonFunctioObject.put(UIConfigConstants.ID_MAX_IMAGE_SIZE, ImageProcessingSDK.dImageSize+"");
-            commonFunctioObject.put(UIConfigConstants.ID_IMAGE_HEIGHT, ImageProcessingSDK.dImageHeight+"");
-            commonFunctioObject.put(UIConfigConstants.ID_IMAGE_WIDTH, ImageProcessingSDK.dImgaeWidth+"");
-            commonFunctioObject.put(UIConfigConstants.BARCODE_SCAN_MAX_LIMIT, ImageProcessingSDK.maxBarcodeScan);
-            if(null!=country && !country.isEmpty()){
-                commonFunctioObject.put(UIConfigConstants.ID_COUNTRY, country);
-            }else{
-                commonFunctioObject.put(UIConfigConstants.ID_COUNTRY, "USA");
-            }
-            commonFunctioObject.put(UIConfigConstants.ID_STATE, "");
-            if(null!=idType && !idType.isEmpty()){
-                commonFunctioObject.put(UIConfigConstants.ID_TYPE, idType);
-            }else{
-                commonFunctioObject.put(UIConfigConstants.ID_TYPE, "PP");
-            }
-            commonFunctioObject.put(UIConfigConstants.ID_MRZ_RETRY_COUNT, ImageProcessingSDK.dMRZRetryCount);
-            commonFunctioObject.put(UIConfigConstants.ID_FOCUS_SCORE, ImageProcessingSDK.dLaplaceFocus);
-            commonFunctioObject.put(UIConfigConstants.ID_SATURATION_SCORE, ImageProcessingSDK.dIDSaturationScore);
-            commonFunctioObject.put(UIConfigConstants.ID_ZOOM_SCORE, ImageProcessingSDK.dIDZoomScore);
-            commonFunctioObject.put(UIConfigConstants.ID_DISABLE_RECTANGLE_DRAWING, ImageProcessingSDK.dDisableRectDrawing ? "Y" : "N");
-            commonFunctioObject.put(UIConfigConstants.ID_ENABLE_REAL_ID_CHECK, ImageProcessingSDK.dIsRealIDRequired ? "Y" : "N");
-            commonFunctioObject.put(UIConfigConstants.ID_UPLOAD_ID_DATA, "N");
-            commonFunctioObject.put(UIConfigConstants.ID_ENABLE_DO_NOT_CAPTURE, "N");
-            commonFunctioObject.put(UIConfigConstants.ID_DATA_UPLOAD_ENVIRONMENT, "DEMO");
-            commonFunctioObject.put(UIConfigConstants.ID_MRZ_BARCODE_RETRY_COUNT, ImageProcessingSDK.dMRZBarcodeRetryCount);
-            commonFunctioObject.put(UIConfigConstants.ID_MRZ_BARCODE_RETRY_TIME, ImageProcessingSDK.dMRZBarcodeRetryTime);
-            commonFunctioObject.put(UIConfigConstants.ID_REAL_ID_CAPTURING_THRESHOLD, ImageProcessingSDK.dRealIDCaptureFrontThreshold);
-            commonFunctioObject.put(UIConfigConstants.ID_IMAGE_RESOLUTION_WIDTH, ImageProcessingSDK.dIDImageResolutionWidth);
-            commonFunctioObject.put(UIConfigConstants.ID_IMAGE_RESOLUTION_HEIGHT, ImageProcessingSDK.dIDImageResolutionHeight);
-            commonFunctioObject.put(UIConfigConstants.ID_ENABLE_IMAGE_RESIZE, ImageProcessingSDK.dImageResizeEnable ? "Y" : "N");
-
-            Log.e("json",commonFunctioObject+"");
-            ImageProcessingSDK.getInstance().autoCapture(getCurrentActivity(), ImageType.BACK, commonFunctioObject, null, null);
+            JSONObject additionalDictionaryJSONObject = new JSONObject(additionalDictionary);
+            JSONObject uiConfigDictionaryJSONObject = new JSONObject(uiConfigDictionary);
+            ImageProcessingSDK.getInstance().autoCapture(getCurrentActivity(), ImageType.FRONT, uiConfigDictionaryJSONObject, additionalDictionaryJSONObject, null);
         }
         catch (Exception e)
         {
@@ -195,23 +114,23 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
     }
 
     @ReactMethod
-    public void  processImageAndMatchFace(String country, String idType) {
+    public void  captureIDBack(String additionalDictionary, String uiConfigDictionary) {
         try {
-            JSONObject additionalData = new JSONObject();
-            additionalData.put("Manual_Review_Required", "N");
-            additionalData.put("Bypass_Age_Validation", "N");
-            additionalData.put("Bypass_Name_Matching", "N");
-            additionalData.put("Deduplication_Required", "N");
-            additionalData.put("Need_Immediate_Response", "N");
-            additionalData.put("POST_Data_API_Required", "N");
-            additionalData.put("Send_Input_Images_in_POST", "N");
-            additionalData.put("Send_Processed_Images_in_POST", "N");
-            additionalData.put("Capture_Secondary_ID", "N");
-            additionalData.put("Deduplication_Manual_Review_Required", "N");
-            additionalData.put("ID_Back_Image_Required", "Y");
-            additionalData.put("Verify_Data_With_Host", "N");
-            additionalData.put("Service_ID", "10");
-            additionalData.put("Customer_Gender", "M");
+
+            JSONObject additionalDictionaryJSONObject = new JSONObject(additionalDictionary);
+            JSONObject uiConfigDictionaryJSONObject = new JSONObject(uiConfigDictionary);
+            ImageProcessingSDK.getInstance().autoCapture(getCurrentActivity(), ImageType.BACK, uiConfigDictionaryJSONObject, additionalDictionaryJSONObject, null);
+        }
+        catch (Exception e)
+        {
+            Log.e("expection",e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void  processImageAndMatchFace(String countryCode, String stateCode, String idType, String additionalDictionary) {
+        try {
+            JSONObject additionalDictionaryJSONObject = new JSONObject(additionalDictionary);
 
             IdType idTypes = IdType.PASSPORT;
             if(null!=idType && !idType.isEmpty()){
@@ -246,15 +165,8 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
                 }
             }
 
-            String countrys = "USA";
-            if(null!=country && !country.isEmpty()){
-                countrys = country;
-            }
-
-            String states = "";
-
             ImageProcessingSDK.getInstance().setImageProcessingResponseListener(IDMissionSDK.this);
-            ImageProcessingSDK.getInstance().processImageAndMatchFace(getCurrentActivity(), country, states, idTypes, "FACE", additionalData, true, true);
+            ImageProcessingSDK.getInstance().processImageAndMatchFace(getCurrentActivity(), countryCode, stateCode, idTypes, "FACE", additionalDictionaryJSONObject, true, true);
         }
         catch(Exception e)
         {
@@ -305,7 +217,7 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
             image = map.get("FRONT");
             if(image !=null) {
                 try {
-//                    params.putString("front", image);
+                    params.putString("front", resizeBase64Image(image));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -315,7 +227,7 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
             image = map.get("BACK");
             if(image !=null) {
                 try {
-//                    params.putString("back", image);
+                    params.putString("back", resizeBase64Image(image));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -326,7 +238,7 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
             image = map.get("GENERIC");
             if(image !=null) {
                 try {
-//                    params.putString("generic", image);
+                    params.putString("generic", resizeBase64Image(image));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -579,5 +491,24 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
     @Override
     public void cancelPogressBar() {
 
+    }
+
+    public String resizeBase64Image(String base64image){
+        try{
+            byte [] encodeByte=Base64.decode(base64image.getBytes(),Base64.DEFAULT);
+            BitmapFactory.Options options=new BitmapFactory.Options();
+            options.inPurgeable = true;
+            Bitmap image = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length,options);
+
+            ByteArrayOutputStream baos=new  ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG,70, baos);
+
+            byte [] b=baos.toByteArray();
+            System.gc();
+            return Base64.encodeToString(b, Base64.NO_WRAP);
+        }catch(Exception e){
+            e.printStackTrace();
+            return base64image;
+        }
     }
 }
