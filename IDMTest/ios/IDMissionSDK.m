@@ -58,7 +58,8 @@ RCT_EXPORT_METHOD(detectFace:(NSString *)faceCaptureConfig uiConfigDictionary:(N
   dispatch_async(dispatch_get_main_queue(), ^{
     NSError *error;
     NSData* faceCaptureConfigData = [faceCaptureConfig dataUsingEncoding:NSUTF8StringEncoding];
-    NSMutableDictionary *faceCaptureConfigDict = [NSJSONSerialization JSONObjectWithData:faceCaptureConfigData options:kNilOptions error:&error];
+    NSMutableDictionary *faceCaptureConfigDict = [[NSMutableDictionary alloc] init];
+    [faceCaptureConfigDict setObject:faceCaptureConfigData forKey:@"faceCaptureConfig"];    
     NSData* uiConfigDictionaryData = [uiConfigDictionary dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableDictionary *uiConfigDict = [NSJSONSerialization JSONObjectWithData:uiConfigDictionaryData options:kNilOptions error:&error];
     [AppItSDK detectFace:rootViewController faceCaptureConfig:faceCaptureConfigDict uiConfigDictionary:uiConfigDict];
