@@ -68,6 +68,10 @@ export default class Home extends React.Component {
         IDMissionSDK.detectFace(JSON.stringify(faceCaptureConfig), JSON.stringify(uiConfigDictionary));
     }
 
+    onCaptureFingerprint = () => {
+        IDMissionSDK.captureFingerprints();
+    }
+	
     onCaptureIDFront = () => {
         var additionalDictionary = {};
         var uiConfigDictionary = {
@@ -144,6 +148,10 @@ export default class Home extends React.Component {
 
                     <TouchableOpacity style={styles.startButton} onPress={() => { this.onCaptureIDBack() }}>
                         <Text style={styles.startButtonText}>Capture ID Back</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.startButton} onPress={() => { this.onCaptureFingerprint() }}>
+                        <Text style={styles.startButtonText}>Capture Fingerprint</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.startButton} onPress={() => { this.onProcessImageAndMatchFace() }}>
