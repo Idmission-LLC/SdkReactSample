@@ -95,6 +95,40 @@ RCT_EXPORT_METHOD(captureIDBack:(NSString *)additionalDictionary uiConfigDiction
   });
 }
 
+RCT_EXPORT_METHOD(captureFingerprints)
+{
+  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  
+  dispatch_async(dispatch_get_main_queue(), ^{
+
+    NSMutableDictionary *fingerprint_Dict = [[NSMutableDictionary alloc] init];
+    [fingerprint_Dict setObject:@"cfc_indexfinger_min_threshold" forKey:@"40"];
+    [fingerprint_Dict setObject:@"cfc_middlefinger_min_threshold" forKey:@"40"];
+    [fingerprint_Dict setObject:@"cfc_ringfinger_min_threshold" forKey:@"40"];
+    [fingerprint_Dict setObject:@"cfc_babyfinger_min_threshold" forKey:@"40"];
+
+    [fingerprint_Dict setObject:@"cfc_indexfinger_threshold" forKey:@"100"];
+    [fingerprint_Dict setObject:@"cfc_middlefinger_threshold" forKey:@"100"];
+    [fingerprint_Dict setObject:@"cfc_ringfinger_threshold" forKey:@"100"];
+    [fingerprint_Dict setObject:@"cfc_babyfinger_threshold" forKey:@"70"];
+
+    [fingerprint_Dict setObject:@"cfc_process_indexfinger" forKey:@"Y"];
+    [fingerprint_Dict setObject:@"cfc_process_middlefinger" forKey:@"N"];
+    [fingerprint_Dict setObject:@"cfc_process_ringfinger" forKey:@"N"];
+    [fingerprint_Dict setObject:@"cfc_process_babyfinger" forKey:@"N"];
+
+    [fingerprint_Dict setObject:@"cfc_keep_index_finger" forKey:@"Y"];
+    [fingerprint_Dict setObject:@"cfc_keep_middle_finger" forKey:@"N"];
+    [fingerprint_Dict setObject:@"cfc_keep_ring_finger" forKey:@"N"];
+    [fingerprint_Dict setObject:@"cfc_keep_baby_finger" forKey:@"N"];
+
+    [fingerprint_Dict setObject:@"cfc_zoom_camera" forKey:@"1"];
+    [fingerprint_Dict setObject:@"cfc_process_4k_image" forKey:@"N"];
+    
+    [AppItSDK captureFourFingerprint:rootViewController cameraFingerCaptureConfig:fingerprint_Dict];
+  });
+}
+
 RCT_EXPORT_METHOD(processImageAndMatchFace:(NSString *)countryCode stateCode:(NSString *)stateCode idType:(NSString *)idType additionalDictionary:(NSString *)additionalDictionary)
 {
   UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
