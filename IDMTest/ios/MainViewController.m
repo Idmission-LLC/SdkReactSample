@@ -76,6 +76,18 @@
   [IDMissionSDK getEvent:@"DataCallback" dict:nsDict];
 }
 
+- (void)fourFingerprintDetectionResponse:(NSMutableDictionary *)result {
+    NSLog(@"fourFingerprintDetectionResponse : %@", result);
+  
+    NSMutableDictionary *nsDict = [[NSMutableDictionary alloc] init];
+    
+    NSString *statusCode = [result objectForKey:@"statusCode"];
+    NSString *statusMessage = [result objectForKey:@"statusMessage"];
+    
+    NSLog(@"Response : %@ ", nsDict);
+    [IDMissionSDK getEvent:@"DataCallback" dict:nsDict];
+}
+
 - (void)processImageAndFaceMatchingResponse:(NSMutableDictionary *)result
 {
   NSLog(@"processImageAndFaceMatchingResponse Response : %@ ", result);
