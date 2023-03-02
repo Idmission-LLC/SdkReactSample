@@ -124,7 +124,7 @@ RCT_EXPORT_METHOD(captureFingerprints)
 
     [fingerprint_Dict setObject:@"cfc_zoom_camera" forKey:@"1"];
     [fingerprint_Dict setObject:@"cfc_process_4k_image" forKey:@"N"];
-    
+    [fingerprint_Dict setObject:@"cfc_show_instruction_screen" forKey:@"Y"];
     [AppItSDK captureFourFingerprint:rootViewController cameraFingerCaptureConfig:fingerprint_Dict];
   });
 }
