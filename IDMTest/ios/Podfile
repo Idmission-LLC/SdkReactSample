@@ -23,8 +23,8 @@ target 'IDMTest' do
   pod 'SocketRocket', :build_type => :dynamic_framework
   pod 'IdmEncryption', :build_type => :dynamic_framework
   pod 'TensorFlowLiteObjC'
-  pod 'GoogleMLKit/TextRecognition' , :build_type => :dynamic_framework
-  pod 'GoogleMLKit/FaceDetection' , :build_type => :dynamic_framework
+  pod 'GoogleMLKit/TextRecognition', '3.2.0' , :build_type => :dynamic_framework
+  pod 'GoogleMLKit/FaceDetection', '3.2.0' , :build_type => :dynamic_framework
   pod 'Firebase/Crashlytics' , :build_type => :dynamic_framework
   pod 'Firebase/Analytics' , :build_type => :dynamic_framework
 
