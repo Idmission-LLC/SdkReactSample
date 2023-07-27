@@ -67,6 +67,38 @@ RCT_EXPORT_METHOD(detectFace:(NSString *)faceCaptureConfig uiConfigDictionary:(N
   });
 }
 
+RCT_EXPORT_METHOD(videoConferencing)
+{
+  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  
+  dispatch_async(dispatch_get_main_queue(), ^{
+    
+    NSMutableDictionary *nsDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *videoConfDict = [NSMutableDictionary new];
+    //[videoConfDict setObject:formID forKey:@"FORM_ID"];
+
+    [AppItSDK startVideoConferencing:rootViewController videoConferenceData:nsDict];
+
+  });
+}
+
+RCT_EXPORT_METHOD(genericDocument)
+{
+  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  
+  dispatch_async(dispatch_get_main_queue(), ^{
+    
+    NSMutableDictionary *nsDict = [[NSMutableDictionary alloc] init];
+    
+    [nsDict setObject:@"N" forKey:@"id_generic_file_upload_enable"];
+    NSString *documentName = @"Generic_Document"; //As Configured In your Product
+
+    [AppItSDK captureGenericDocument:rootViewController additionalDictionary:nil uiConfigDictionary:nsDict fieldName:documentName];
+
+    
+  });
+}
+
 RCT_EXPORT_METHOD(captureIDFront:(NSString *)additionalDictionary uiConfigDictionary:(NSString *)uiConfigDictionary)
 {
   UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
