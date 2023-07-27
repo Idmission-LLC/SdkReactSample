@@ -68,6 +68,14 @@ export default class Home extends React.Component {
         IDMissionSDK.detectFace(JSON.stringify(faceCaptureConfig), JSON.stringify(uiConfigDictionary));
     }
 
+    onVideoConferencing = () => {
+        IDMissionSDK.videoConferencing();
+    }
+
+    onGenericDocument = () => {
+        IDMissionSDK.genericDocument();
+    }
+	
     onCaptureFingerprint = () => {
         IDMissionSDK.captureFingerprints();
     }
@@ -142,6 +150,14 @@ export default class Home extends React.Component {
                         <Text style={styles.startButtonText}>Detect Face</Text>
                     </TouchableOpacity>
 
+                    <TouchableOpacity style={styles.startButton} onPress={() => { this.onVideoConferencing() }}>
+                        <Text style={styles.startButtonText}>Start Video Conferencing</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.startButton} onPress={() => { this.onGenericDocument() }}>
+                        <Text style={styles.startButtonText}>Generic document Capture</Text>
+                    </TouchableOpacity>
+	
                     <TouchableOpacity style={styles.startButton} onPress={() => { this.onCaptureIDFront() }}>
                         <Text style={styles.startButtonText}>Capture ID Front</Text>
                     </TouchableOpacity>
