@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AppItFramework/AppItSDK.h>
+#import <AppItFramework_IdFace/AppItSDK.h>
 
 
 NS_ASSUME_NONNULL_BEGIN
