@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import <React/RCTBridgeModule.h>
-#import <AppItFramework/AppItSDK.h>
+#import <AppItFramework_IdFace/AppItSDK.h>
 #import <React/RCTEventEmitter.h>
 
 
