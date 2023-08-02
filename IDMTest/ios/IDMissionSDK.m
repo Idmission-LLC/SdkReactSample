@@ -4,7 +4,7 @@
 //
 
 #import "IDMissionSDK.h"
-#import <AppItFramework/AppItSDK.h>
+#import <AppItFramework_IdFace/AppItSDK.h>
 #import <React/RCTEventEmitter.h>
 
 @interface IDMissionSDK ()
@@ -82,7 +82,7 @@ RCT_EXPORT_METHOD(videoConferencing)
   });
 }
 
-RCT_EXPORT_METHOD(genericDocument)
+/*RCT_EXPORT_METHOD(genericDocument)
 {
   UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
   
@@ -96,6 +96,31 @@ RCT_EXPORT_METHOD(genericDocument)
     [AppItSDK captureGenericDocument:rootViewController additionalDictionary:nil uiConfigDictionary:nsDict fieldName:documentName];
 
     
+  });
+}*/
+
+RCT_EXPORT_METHOD(genericDocument) {
+  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  dispatch_async(dispatch_get_main_queue(), ^{
+    NSError *error;
+    
+    NSMutableDictionary *idCaptureConfigDict = [[NSMutableDictionary alloc] init];
+    [idCaptureConfigDict setObject:@"Y" forKey:@"id_generic_file_upload_enable"];
+    [idCaptureConfigDict setObject:@"Generic_Document" forKey:@"id_generic_doc_fieldname"];
+    [idCaptureConfigDict setObject:@"800" forKey:@"id_image_width"];
+    [idCaptureConfigDict setObject:@"1170" forKey:@"id_image_height"];
+    [idCaptureConfigDict setObject:@"500" forKey:@"id_max_image_size"];
+    [idCaptureConfigDict setObject:@"60" forKey:@"id_enable_capture_button_time"];
+    [idCaptureConfigDict setObject:@"25" forKey:@"id_glare_percentage"];
+    [idCaptureConfigDict setObject:@"35" forKey:@"id_max_focus_threshold"];
+    [idCaptureConfigDict setObject:@"12" forKey:@"id_min_focus_threshold"];
+    [idCaptureConfigDict setObject:@"70" forKey:@"id_light_threshold"];
+    [idCaptureConfigDict setObject:@"Y" forKey:@"id_capture_portrait"];
+    
+    NSMutableDictionary *additionalJSONDict = [[NSMutableDictionary alloc] init];
+    [additionalJSONDict setObject:@"955548687" forKey:@"CustomerIdValue"];
+    
+      [AppItSDK captureGenericDocument:rootViewController additionalDictionary:(NSMutableDictionary*)additionalJSONDict uiConfigDictionary:(NSMutableDictionary*)idCaptureConfigDict fieldName:(NSString*)@"Generic_Document"];
   });
 }
 
